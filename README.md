@@ -219,4 +219,4 @@ $${\rm{recall}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(gold)}}}}$$
 [https://github.com/SXUCFN/The-2nd-Chinese-Frame-Semantic-Parsing](https://github.com/SXUCFN/The-2nd-Chinese-Frame-Semantic-Parsing)
 
 # 论文格式
-会议投稿使用LaTeX模板。提交的论文最多包含 6 页正文，参考文献页数不限。由于本次会议采用双盲审稿，作者姓名和单位不能出现在投稿的论文中。因此，作者的自引不可采用“作者名字提出…”的方式，而是用“我们提出…”。不符合这些要求的论文将不经过完整的审稿流程而直接被拒稿。
+会议投稿使用LaTeX模板。提交的论文最多包含 6 页正文，参考文献页数不限。由于本次会议采用双盲审稿，作者姓名和单位不能出现在投稿的论文中。因此，作者的自引不可采用“我们提出…”的方式，而是用“作者名字提出…”。不符合这些要求的论文将不经过完整的审稿流程而直接被拒稿。
