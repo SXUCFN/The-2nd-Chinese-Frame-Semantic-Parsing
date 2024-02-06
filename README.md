@@ -169,7 +169,8 @@ $$
 &emsp;&emsp;其中，$\rm{gold}$ 与 $\rm{pred}$ 分别表示真实span与预测span，$\rm{InterSec(gold,pred)}$ 表示二者共有的token数量， $\rm{Len(*)}$ 表示计算集合中的token数量。
 
 3. **论元角色识别**: 以F1作为评价指标，计算公式如下:
-
+4. 
+![equation]([https://latex.codecogs.com/gif.latex?1%2Bsin%28mc%5E2%29%0D%0A](http://www.sciweavers.org/tex2img.php?eq=%5Cbegin%7Barray%7D%7Bl%7D%0A%7B%5Crm%7Btask2%7D%7D%5C_%7B%5Crm%7Bf1%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%5Crm%7B2%2Aprecision%2Arecall%7D%7D%7D%7D%7B%7B%7B%5Crm%7Bprecision%7D%7D%20%2B%20%7B%5Crm%7Brecall%7D%7D%7D%7D%5C%5C%0A%7B%5Crm%7Bprecision%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%5Crm%7BInterSec%28gold%2Cpred%29%7D%7D%7D%7D%7B%7B%7B%5Crm%7BLen%28pred%29%7D%7D%7D%7D%5C%5C%0A%7B%5Crm%7Brecall%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%5Crm%7BInterSec%28gold%2Cpred%29%7D%7D%7D%7D%7B%7B%7B%5Crm%7BLen%28gold%29%7D%7D%7D%7D%0A%5Cend%7Barray%7D%0A&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="\begin{array}{l}{\rm{task2}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}} + {\rm{recall}}}}\\{\rm{precision}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(pred)}}}}\\{\rm{recall}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(gold)}}}}\end{array})) 
 $$
 \begin{array}{l}
 {\rm{task3}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}} + {\rm{recall}}}}\\
