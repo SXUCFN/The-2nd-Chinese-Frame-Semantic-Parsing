@@ -1,8 +1,8 @@
 # 任务内容
 
-&emsp;&emsp;框架语义解析（Frame Semantic Parsing，FSP）是基于框架语义学的细粒度语义分析任务，其目标是从句中提取框架语义结构，实现对句子中事件或情境的深层理解。框架语义解析对阅读理解、文本摘要、关系抽取等下游任务具有重要意义。
-&emsp;&emsp;然而，传统框架语义解析无法解释意义不能直接从其组成部分中预测出来的语言现象。如“爱买不买”，表示说话者对另一方是否要购买某物感到不在乎或是不感兴趣，传统方法以词为单位对该短语进行解析，以“爱”、“买”等动词作为目标词，激活喜欢、购买等场景，无法表达该短语的真实含义。
-&emsp;&emsp;构式语法主张语言知识是由固定的、有意义的单位组成，这些单位被称为构式，既可以是简单的词或短语，也可以是复杂的句子或话语。由此，短语“爱买不买”是一个表达语义的整体，激活“情感反应”框架，样例如下所示：
+&emsp;&emsp;框架语义解析（Frame Semantic Parsing，FSP）是基于框架语义学的细粒度语义分析任务，其目标是从句中提取框架语义结构，实现对句子中事件或情境的深层理解。框架语义解析对阅读理解、文本摘要、关系抽取等下游任务具有重要意义。  
+&emsp;&emsp;然而，传统框架语义解析无法解释意义不能直接从其组成部分中预测出来的语言现象。如“爱买不买”，表示说话者对另一方是否要购买某物感到不在乎或是不感兴趣，传统方法以词为单位对该短语进行解析，以“爱”、“买”等动词作为目标词，激活喜欢、购买等场景，无法表达该短语的真实含义。   
+&emsp;&emsp;构式语法主张语言知识是由固定的、有意义的单位组成，这些单位被称为构式，既可以是简单的词或短语，也可以是复杂的句子或话语。由此，短语“爱买不买”是一个表达语义的整体，激活“情感反应”框架，样例如下所示：  
 
 <table align="center">
     <tr>
@@ -148,45 +148,42 @@
 
 # 评价标准
 
-1. **框架识别**：以准确率（Accuracy）作为评价指标，具体定义如下：
-
-$$
+1. **框架识别**：以准确率（Accuracy）作为评价指标，具体定义如下：  
+```math
 \rm{task1\_acc} = \rm{correct} / \rm{total}
-$$
+```
 
 &emsp;&emsp;其中，correct为模型预测正确的数量，total为待识别框架总量。
 
 2. **论元范围识别**：以F1作为评价指标，计算公式如下：
-
-$$
-\begin{array}{l}
-{\rm{task2}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}} + {\rm{recall}}}}\\
+```math
+{\rm{task2}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}}+{\rm{recall}}}}\\
+```
+```math
 {\rm{precision}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(pred)}}}}\\
-{\rm{recall}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(gold)}}}}
-\end{array}
-$$
+```
+$${\rm{recall}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(gold)}}}}$$
 
-&emsp;&emsp;其中，$\rm{gold}$ 与 $\rm{pred}$ 分别表示真实span与预测span，$\rm{InterSec(gold,pred)}$ 表示二者共有的token数量， $\rm{Len(*)}$ 表示计算集合中的token数量。
+
+
+&emsp;&emsp;其中， $\rm{gold}$ 与 $\rm{pred}$ 分别表示真实span与预测span， $\rm{InterSec(gold,pred)}$ 表示二者共有的token数量， $\rm{Len(*)}$ 表示计算集合中的token数量。
 
 3. **论元角色识别**: 以F1作为评价指标，计算公式如下:
-4. 
-![equation]([https://latex.codecogs.com/gif.latex?1%2Bsin%28mc%5E2%29%0D%0A](http://www.sciweavers.org/tex2img.php?eq=%5Cbegin%7Barray%7D%7Bl%7D%0A%7B%5Crm%7Btask2%7D%7D%5C_%7B%5Crm%7Bf1%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%5Crm%7B2%2Aprecision%2Arecall%7D%7D%7D%7D%7B%7B%7B%5Crm%7Bprecision%7D%7D%20%2B%20%7B%5Crm%7Brecall%7D%7D%7D%7D%5C%5C%0A%7B%5Crm%7Bprecision%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%5Crm%7BInterSec%28gold%2Cpred%29%7D%7D%7D%7D%7B%7B%7B%5Crm%7BLen%28pred%29%7D%7D%7D%7D%5C%5C%0A%7B%5Crm%7Brecall%7D%7D%20%3D%20%5Cfrac%7B%7B%7B%5Crm%7BInterSec%28gold%2Cpred%29%7D%7D%7D%7D%7B%7B%7B%5Crm%7BLen%28gold%29%7D%7D%7D%7D%0A%5Cend%7Barray%7D%0A&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="\begin{array}{l}{\rm{task2}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}} + {\rm{recall}}}}\\{\rm{precision}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(pred)}}}}\\{\rm{recall}} = \frac{{{\rm{InterSec(gold,pred)}}}}{{{\rm{Len(gold)}}}}\end{array})) 
-$$
-\begin{array}{l}
-{\rm{task3}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}} + {\rm{recall}}}}\\
-{\rm{precision}} = \frac{{{\rm{Count}}({\rm{gold}} \cap {\rm{pred}})}}{{{\rm{Count}}({\rm{pred}})}}\\
+```math
+{\rm{task3}}\_{\rm{f1}} = \frac{{{\rm{2*precision*recall}}}}{{{\rm{precision}} + {\rm{recall}}}}
+```
+```math
+{\rm{precision}} = \frac{{{\rm{Count}}({\rm{gold}} \cap {\rm{pred}})}}{{{\rm{Count}}({\rm{pred}})}}
+```
+```math
 {\rm{recall}} = \frac{{{\rm{Count}}({\rm{gold}} \cap {\rm{pred}})}}{{{\rm{Count}}({\rm{gold}})}}
-\end{array}
-$$
+```
+&emsp;&emsp;其中， $\rm{gold}$ 与 $\rm{pred}$ 分别表示真实结果与预测结果的集合， $\rm{Count(*)}$ 表示集合中的元组数量。
 
-&emsp;&emsp;其中，$\rm{gold}$ 与 $\rm{pred}$ 分别表示真实结果与预测结果的集合，$\rm{Count(*)}$ 表示集合中的元组数量。
-
-4. **最终评测成绩**：以三个子任务分数的加权求和为最终结果，计算公式如下：
-
-$$
-{\rm{task\_score}}\;{\rm{ = }}\;{\rm{0}}.{\rm{4}}\;{\rm{*}}\;{\rm{task1\_acc}}\;{\rm{ + }}\;{\rm{0}}.{\rm{2}}\;{\rm{*task2\_f1 + 0}}.{\rm{4*task3\_f1}}
-$$
-
+4. **最终评测成绩**：以三个子任务分数的加权求和为最终结果，计算公式如下：  
+```math
+{\rm{task\_score}}\;{\rm{ = }}\;{\rm{0}}.{\rm{4}}\;{\rm{*}}\;{\rm{task1\_acc}}\;{\rm{ + }}\;{\rm{0}}.{\rm{2}}\;{\rm{*task2\_f1 + 0}}.{\rm{4*task3\_f1}} 
+```
 # 评测赛程
 
 具体赛程安排如下：
@@ -201,22 +198,22 @@ $$
 
 # 组织者和联系人
 
-评测组织者：李茹、谭红叶（山西大学）；常宝宝（北京大学）；戴新宇（南京大学）
-任务负责人：闫智超（山西大学博士生，202312407023@email.sxu.edu.cn）
-任务联系人：李俊材（山西大学博士生，202312407010@email.sxu.edu.cn）
+评测组织者：李茹、谭红叶（山西大学）；常宝宝（北京大学）；戴新宇（南京大学）  
+任务负责人：闫智超（山西大学博士生，202312407023@email.sxu.edu.cn）  
+任务联系人：李俊材（山西大学博士生，202312407010@email.sxu.edu.cn）  
 
 # 任务奖项
 
-本次评测为每个赛道评选出如下奖项：
+本次评测为每个赛道评选出如下奖项：  
 
-1. 一等奖0-1名，奖励为笔记本电脑1台；
-2. 二等奖0-1名，奖励为1200元；
-3. 三等奖0-1名，奖励为800元。
+1. 一等奖0-1名，奖励为笔记本电脑1台；  
+2. 二等奖0-1名，奖励为1200元；  
+3. 三等奖0-1名，奖励为800元。  
 
 # 赞助情况
 
-笔记本电脑由百信信息技术有限公司董事长王宪朝提供赞助；
-评测奖金由思腾合力（天津）科技有限公司高教负责人宋肖敏和太原市杰辉科技共同赞助。
+笔记本电脑由百信信息技术有限公司董事长王宪朝提供赞助；  
+评测奖金由思腾合力（天津）科技有限公司高教负责人宋肖敏和太原市杰辉科技共同赞助。  
 
 # 任务网址
 
