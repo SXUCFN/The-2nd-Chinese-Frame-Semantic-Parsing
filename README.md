@@ -106,7 +106,7 @@
         {"start": 7, "end": 8, "pos": "v"},
         {"start": 9, "end": 9, "pos": "a"},
         {"start": 10, "end": 11, "pos": "n"},
-        …
+        ……
     ]
 }]
 ```
@@ -140,7 +140,6 @@
         { "fe_name": "终状态", "fe_abbr": "finis", "fe_ename": "Final_state", "fe_def": "实体经历属性值的变化之后所达到的状态。" },
         { "fe_name": "变幅", "fe_abbr": "diff", "fe_ename": "Difference", "fe_def": "实体在某维度上变动的幅度。" },
         { "fe_name": "值区间", "fe_abbr": "val_range", "fe_ename": "Value_range", "fe_def": "属性值的变动范围。" }
-
     ]
 }]
 
